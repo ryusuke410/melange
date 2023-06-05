@@ -1,0 +1,6 @@
+[user]
+  name = account1
+  email = email-account1@example.com
+
+[core]
+  sshCommand = ssh -i ~/.ssh/id_account1

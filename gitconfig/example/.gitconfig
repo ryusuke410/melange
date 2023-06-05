@@ -1,0 +1,66 @@
+# This is Git's per-user configuration file.
+[push]
+  default = simple
+
+[alias]
+  st = status
+  lg = log -p
+  co = checkout
+  sw = switch
+  rs = restore
+  ls = ls-files
+
+  df = diff
+  ds = diff --staged
+
+  ci = commit
+  cm = commit -m
+  cmm = commit -Ssm
+  ca = commit --amend
+  cam = commit --amend -m
+  caa = commit --amend --no-edit
+  ss = commit --amend --no-edit -S
+
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --date=local
+
+  # Show files ignored by git:
+  ign = ls-files -o -i --exclude-standard
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = code --wait
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+  insteadOf = git@github.com:
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[commit]
+  template = ~/.stCommitMsg
+
+[init]
+  defaultBranch = main
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+  insteadOf = git@github.com:
+
+[includeIf "gitdir:~/account0/**"]
+  path = ~/.gitconfig_account0
+
+[includeIf "gitdir:~/account1/**"]
+  path = ~/.gitconfig_account1
